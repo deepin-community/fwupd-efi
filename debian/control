@@ -1,15 +1,99 @@
-Source: template-repository
-Section: unknown
+Source: fwupd-efi
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Debian EFI <debian-efi@lists.debian.org>
+Uploaders: Steve McIntyre <93sam@debian.org>,
+           Matthias Klumpp <mak@debian.org>,
+           Mario Limonciello <superm1@gmail.com>
+Build-Depends: debhelper (>= 13),
+               gnu-efi (>= 3.0.18) [amd64 arm64 armhf i386 riscv64 loong64],
+               meson,
+               mingw-w64-tools [amd64 arm64 armhf i386 riscv64 loong64],
+Standards-Version: 4.6.0.1
+Section: admin
+Homepage: https://github.com/fwupd/fwupd-efi
+Vcs-Git: https://salsa.debian.org/efi-team/fwupd-efi.git -b debian/unstable
+Vcs-Browser: https://salsa.debian.org/efi-team/fwupd-efi/-/tree/debian/unstable
 
-Package: template-repository
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Package: fwupd-unsigned
+Architecture: amd64 arm64 armhf i386 riscv64 loong64
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+Recommends: fwupd-signed
+Multi-Arch: foreign
+Breaks: fwupd (<< 1.7.1)
+Replaces: fwupd (<< 1.7.1)
+Description: Firmware update daemon (Unsigned EFI binaries)
+ fwupd is a daemon to allow session software to update device firmware.
+ You can either use a GUI software manager like GNOME Software to view and
+ apply updates, the command-line tool or the system D-Bus interface directly.
+ Firmware updates are supported for a variety of technologies.
+ See <https://github.com/fwupd/fwupd> for details
+ .
+ This package provides the EFI binaries used for UEFI capsule updates
+
+Package: fwupd-unsigned-dev
+Architecture: amd64 arm64 armhf i386 riscv64 loong64
+Depends: ${misc:Depends},
+         fwupd-unsigned (= ${binary:Version})
+Description: Firmware update daemon (Development information)
+ fwupd is a daemon to allow session software to update device firmware.
+ You can either use a GUI software manager like GNOME Software to view and
+ apply updates, the command-line tool or the system D-Bus interface directly.
+ Firmware updates are supported for a variety of technologies.
+ See <https://github.com/fwupd/fwupd> for details
+ .
+ This package provides the dependencies for the fwupd daemon to resolve
+
+Package: fwupd-amd64-signed-template
+Architecture: amd64
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         make | build-essential | dpkg-dev
+Description: Template for signed fwupd package
+ This package is used to control code signing by the Debian signing
+ service.
+
+Package: fwupd-i386-signed-template
+Architecture: i386
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         make | build-essential | dpkg-dev
+Description: Template for signed fwupd package
+ This package is used to control code signing by the Debian signing
+ service.
+
+Package: fwupd-armhf-signed-template
+Architecture: armhf
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         make | build-essential | dpkg-dev
+Description: Template for signed fwupd package
+ This package is used to control code signing by the Debian signing
+ service.
+
+Package: fwupd-arm64-signed-template
+Architecture: arm64
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         make | build-essential | dpkg-dev
+Description: Template for signed fwupd package
+ This package is used to control code signing by the Debian signing
+ service.
+
+Package: fwupd-riscv64-signed-template
+Architecture: riscv64
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         make | build-essential | dpkg-dev
+Description: Template for signed fwupd package
+ This package is used to control code signing by the Debian signing
+ service.
+
+Package: fwupd-loong64-signed-template
+Architecture: loong64
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         make | build-essential | dpkg-dev
+Description: Template for signed fwupd package
+ This package is used to control code signing by the Debian signing
+ service.
