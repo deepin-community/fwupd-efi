@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2021 Richard Hughes <richard@hughsie.com> -->
+<component type="generic">
+  <id>org.freedesktop.fwupd.efi</id>
+  <extends>org.freedesktop.fwupd</extends>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>LGPL-2.0+</project_license>
+  <name>fwupd-efi</name>
+  <summary>EFI helpers to install system firmware</summary>
+  <description>
+    <p>
+      This project builds a UEFI binary for installing updates using the
+      UpdateCapsule runtime service.
+    </p>
+    <p>
+      The source was imported from the combined fwupd project, and is now
+      maintained separately to allow fwupd userspace releases and fwupd-efi
+      UEFI executable releases to follow a different candence.
+    </p>
+  </description>
+  <url type="bugtracker">https://github.com/fwupd/fwupd-efi/issues</url>
+  <url type="homepage">https://fwupd.org/</url>
+  <update_contact>richard_at_hughsie.com</update_contact>
+  <developer_name>The fwupd authors</developer_name>
+  <developer id="org.fwupd">
+    <name translate="no">The fwupd authors</name>
+  </developer>
+  <content_rating type="oars-1.0"/>
+  <releases>
+    <release version="1.7" date="2024-09-20">
+      <description>
+        <p>This release fixes the following bugs:</p>
+        <ul>
+          <li>Fix compilation with GNU-EFI 4.0</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.6" date="2024-04-15">
+      <description>
+        <p>This release fixes the following bugs:</p>
+        <ul>
+          <li>Require gnu-efi 3.0.18 or later</li>
+          <li>Ship an objcopy capable LDS for ARM64</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.5" date="2024-03-18">
+      <description>
+        <p>This release fixes the following bugs:</p>
+        <ul>
+          <li>Add loongarch64 support</li>
+          <li>Add RISC-V support</li>
+          <li>Add SBOM section to linker and crt0 scripts</li>
+          <li>Align the data section to 64K on ARM64</li>
+          <li>Downgrade the .note.GNU-stack failure to a warning</li>
+          <li>Only use 4K pages on ARM32</li>
+          <li>Remove 64K gap on ARM32</li>
+          <li>Some UEFI 2.10 fixes</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.4" date="2023-01-27">
+      <description>
+        <p>This release fixes the following bugs:</p>
+        <ul>
+          <li>Add additional checks for incompatible CRT0</li>
+          <li>Align sections to 512 bytes</li>
+          <li>Generate images that are NX compatible</li>
+          <li>Use manual symbols mode on ARM32</li>
+          <li>Use objcopy to build arm/aarch64 binaries for new binutils</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.3" date="2022-04-14">
+      <description>
+        <p>This release fixes the following bugs:</p>
+        <ul>
+          <li>Fix a regression when applying updates on an HP M60</li>
+          <li>Fix the ARM system crt0 name</li>
+          <li>Show the version when starting fwupd-efi</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.2" date="2022-01-23">
+      <description>
+        <p>This release fixes the following bugs:</p>
+        <ul>
+          <li>Sleep longer when no updates to process or event of error</li>
+          <li>Use the correct ldscript when the local crt0 is used for SBAT</li>
+          <li>Use the standard objcopy binary</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.1" date="2021-06-19">
+      <description>
+        <p>This release fixes the following bugs:</p>
+        <ul>
+          <li>Abort if the host architecture isn't known</li>
+          <li>Account for objdump missing --target option on FreeBSD</li>
+          <li>Pass the found genpeimg to generate_binary</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.0" date="2021-04-23">
+      <description>
+        <p>This is the first release split from the fwupd parent project.</p>
+      </description>
+    </release>
+  </releases>
+</component>
